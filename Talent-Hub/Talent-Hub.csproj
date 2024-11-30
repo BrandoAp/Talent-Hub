@@ -171,6 +171,18 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Client\EmpleadosClient.cs" />
+    <Compile Include="Client\EmpleadosMetodosClient.cs" />
+    <Compile Include="Client\MetodosDesarrolloClient.cs" />
+    <Compile Include="Client\PosicionesDisponiblesClient.cs" />
+    <Compile Include="Client\RequisitosPuestoClient.cs" />
+    <Compile Include="Client\UsuarioClient.cs" />
+    <Compile Include="Client_Controller\EmpleadosClientController.cs" />
+    <Compile Include="Client_Controller\EmpleadosMetodosController.cs" />
+    <Compile Include="Client_Controller\MetodosDesarrolloController.cs" />
+    <Compile Include="Client_Controller\PosicionesDisponiblesController.cs" />
+    <Compile Include="Client_Controller\RequisitosPuestoController.cs" />
+    <Compile Include="Client_Controller\UsuarioClientController.cs" />
     <Compile Include="Controllers\EmpleadosController.cs" />
     <Compile Include="Controllers\EmpleadosMetodosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -268,6 +280,22 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\UsuarioClient\Registrar.cshtml" />
+    <Content Include="Views\UsuarioClient\Login.cshtml" />
+    <Content Include="Views\RequisitosPuesto\Agregar.cshtml" />
+    <Content Include="Views\PosicionesDisponibles\AgregarPosicion.cshtml" />
+    <Content Include="Views\PosicionesDisponibles\UpdatePosicion.cshtml" />
+    <Content Include="Views\PosicionesDisponibles\BuscarPorNombre.cshtml" />
+    <Content Include="Views\MetodosDesarrollo\AgregarMetodo.cshtml" />
+    <Content Include="Views\MetodosDesarrollo\ActualizarMetodo.cshtml" />
+    <Content Include="Views\MetodosDesarrollo\BuscarPorNombre.cshtml" />
+    <Content Include="Views\EmpleadosMetodos\ObtenerConMetodosAsignados.cshtml" />
+    <Content Include="Views\EmpleadosMetodos\ObtenerConMetodosCompletados.cshtml" />
+    <Content Include="Views\EmpleadosClient\AddEmpleado.cshtml" />
+    <Content Include="Views\EmpleadosClient\BuscarPorNombre.cshtml" />
+    <Content Include="Views\EmpleadosClient\UpdateEmpleado.cshtml" />
+    <Content Include="Views\EmpleadosClient\AsignarMetodo.cshtml" />
+    <Content Include="Views\EmpleadosClient\CompletarMetodo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

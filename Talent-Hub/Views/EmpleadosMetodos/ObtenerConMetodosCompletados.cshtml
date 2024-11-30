@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Empleados con Métodos Completados";
+}
+
+<h2>Empleados con Métodos Completados</h2>
+
+@if (ViewBag.Empleados != null)
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Empleado</th>
+                <th>Método Completado</th>
+                <th>Fecha Completado</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in ViewBag.Empleados)
+            {
+                <tr>
+                    <td>@item.Nombre_empleado</td>
+                    <td>@item.Nombre_metodo</td>
+                    <td>@item.Fecha_completado</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No hay empleados con métodos completados.</p>
+}

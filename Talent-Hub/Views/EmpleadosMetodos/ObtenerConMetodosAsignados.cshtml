@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "ObtenerConMetodosAsignados";
+}
+
+<h2>Empleados con Metodos Asignados</h2>
+
+@if (ViewBag.Empleados != null)
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Empleado</th>
+                <th>Método Asignado</th>
+                <th>Fecha Asignado</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in ViewBag.Empleados)
+            {
+                <tr>
+                    <td>@item.Nombre_empleado</td>
+                    <td>@item.Nombre_metodo</td>
+                    <td>@item.Fecha_asignado</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No hay empleados con métodos asignados.</p>
+}

@@ -1,0 +1,24 @@
+﻿@model Talent_Hub.Models.Posiciones_Disponibles
+
+@{
+    ViewBag.Title = "AgregarPosicion";
+}
+
+<h2>Agregar Posicion</h2>
+@using (Html.BeginForm())
+{
+    <div>
+        <label for="Nombre_puesto">Nombre del Puesto:</label>
+        @Html.TextBoxFor(m => m.Nombre_puesto)
+    </div>
+
+    <div>
+        <label for="Departamento">Departamento:</label>
+        @Html.TextBoxFor(m => m.Departamento)
+    </div>
+
+    <button type="submit">Agregar Posición</button>
+}
+
+<p>@ViewBag.Message</p>
+

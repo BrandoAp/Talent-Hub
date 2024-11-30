@@ -1,0 +1,25 @@
+﻿@model Talent_Hub.Models.Usuario
+
+@{
+    ViewBag.Title = "Registrar";
+}
+
+<h2>Registrar Usuario</h2>
+
+@using (Html.BeginForm())
+ {
+    <div>
+        <label for="Nombre_usuario">Nombre de Usuario</label>
+        @Html.TextBoxFor(m => m.Nombre_usuario)
+    </div>
+
+    <div>
+        <label for="Contrasena">Contraseña:</label>
+        @Html.PasswordFor(m => m.Contrasena)
+    </div>
+
+    <button type="submit">Registrar</button>
+            
+ }
+
+<p>@ViewBag.Message</p>

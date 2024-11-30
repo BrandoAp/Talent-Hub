@@ -1,0 +1,25 @@
+﻿@model Talent_Hub.Models.Requisitos_Puesto
+
+@{
+    ViewBag.Title = "Agregar";
+}
+
+<h2>Agregar Requisito al Puesto</h2>
+
+@using (Html.BeginForm())
+{
+    <div>
+        <label for="Id_puesto">ID del Puesto:</label>
+        @Html.TextBoxFor(m => m.Id_puesto)
+    </div>
+
+    <div>
+        <label for="Id_metodo">ID del Método:</label>
+        @Html.TextBoxFor(m => m.Id_metodo)
+    </div>
+
+    <button type="submit">Agregar Requisito</button>
+}
+
+<p>@ViewBag.Message</p>
+

@@ -1,0 +1,34 @@
+﻿@model Talent_Hub.Models.Metodos_Desarrollo
+
+@{
+    ViewBag.Title = "ActualizarMetodo";
+}
+
+<h2>Actualizar Metodo de Desarrollo</h2>
+
+@using (Html.BeginForm())
+{
+    <div>
+        <label for="Id_metodo">ID del Método:</label>
+        @Html.TextBoxFor(m => m.Id_metodo)
+    </div>
+
+    <div>
+        <label for="Nombre_metodo">Nombre del Método:</label>
+        @Html.TextBoxFor(m => m.Nombre_metodo)
+    </div>
+
+    <div>
+        <label for="Descripcion">Descripción:</label>
+        @Html.TextBoxFor(m => m.Descripcion)
+    </div>
+
+    <div>
+        <label for="Habilidades_desarrolla">Habilidades Desarrolladas:</label>
+        @Html.TextBoxFor(m => m.Habilidades_desarrolla)
+    </div>
+
+    <button type="submit">Actualizar Método</button>
+}
+
+<p>@ViewBag.Message</p>

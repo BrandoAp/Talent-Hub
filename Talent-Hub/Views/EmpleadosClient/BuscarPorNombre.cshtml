@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "BuscarPorNombre";
+}
+
+<h2>Buscar Empleado</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.Label("Nombre")
+    @Html.TextBox("nombre")
+    <input type="submit" value="Buscar" />
+}
+
+<div>
+    @if (ViewBag.Empleados != null)
+    {
+        <p>Resultado de búsqueda:</p>
+        <pre>@ViewBag.Empleados</pre>
+    }
+</div>
+

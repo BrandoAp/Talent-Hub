@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "AsignarMetodo";
+}
+
+<h2>Asignar Metodo a Empleado</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.Label("ID Empleado")
+    @Html.TextBox("idEmpleado")
+    <br />
+
+    @Html.Label("ID Metodo")
+    @Html.TextBox("idMetodo")
+    <br />
+
+    <input type="submit" value="Asignar Metodo" />
+}
+
+<div>
+    @if (ViewBag.Message != null)
+    {
+        <p>@ViewBag.Message</p>
+    }
+</div>
+

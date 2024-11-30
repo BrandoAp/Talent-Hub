@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "CompletarMetodo";
+}
+
+<h2>Completar Metodo de Desarrollo</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.Label("ID del Metodo Completado")
+    @Html.TextBox("idCompletado")
+    <br />
+
+    <input type="submit" value="Completar Metodo" />
+}
+
+<div>
+    @if (ViewBag.Message != null)
+    {
+        <p>@ViewBag.Message</p>
+    }
+</div>
+

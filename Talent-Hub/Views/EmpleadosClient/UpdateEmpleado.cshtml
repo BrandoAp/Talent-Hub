@@ -1,0 +1,39 @@
+﻿@model Talent_Hub.Models.Empleado
+@{
+    ViewBag.Title = "UpdateEmpleado";
+}
+
+<h2>Actualizar Empleado</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.Id_empleado)
+    @Html.TextBoxFor(model => model.Id_empleado)
+    <br />
+
+    @Html.LabelFor(model => model.Nombre_empleado)
+    @Html.TextBoxFor(model => model.Nombre_empleado)
+    <br />
+
+    @Html.LabelFor(model => model.Email_empleado)
+    @Html.TextBoxFor(model => model.Email_empleado)
+    <br />
+
+    @Html.LabelFor(model => model.Posicion_actual)
+    @Html.TextBoxFor(model => model.Posicion_actual)
+    <br />
+
+    @Html.LabelFor(model => model.Habilidades)
+    @Html.TextBoxFor(model => model.Habilidades)
+    <br />
+
+    <input type="submit" value="Actualizar Empleado" />
+}
+
+<div>
+    @if (ViewBag.Message != null)
+    {
+        <p>@ViewBag.Message</p>
+    }
+</div>
+
