@@ -1,39 +1,192 @@
 ﻿@model Talent_Hub.Models.Empleado
 @{
     ViewBag.Title = "UpdateEmpleado";
+    Layout = null;
 }
 
-<h2>Actualizar Empleado</h2>
-
-@using (Html.BeginForm())
-{
-    @Html.LabelFor(model => model.Id_empleado)
-    @Html.TextBoxFor(model => model.Id_empleado)
-    <br />
-
-    @Html.LabelFor(model => model.Nombre_empleado)
-    @Html.TextBoxFor(model => model.Nombre_empleado)
-    <br />
-
-    @Html.LabelFor(model => model.Email_empleado)
-    @Html.TextBoxFor(model => model.Email_empleado)
-    <br />
-
-    @Html.LabelFor(model => model.Posicion_actual)
-    @Html.TextBoxFor(model => model.Posicion_actual)
-    <br />
-
-    @Html.LabelFor(model => model.Habilidades)
-    @Html.TextBoxFor(model => model.Habilidades)
-    <br />
-
-    <input type="submit" value="Actualizar Empleado" />
-}
-
-<div>
-    @if (ViewBag.Message != null)
-    {
-        <p>@ViewBag.Message</p>
-    }
+<!-- Header con el nombre de la aplicación y el navbar -->
+<div class="header">
+    <h1>Talent Hub</h1>
+    <nav>
+        <ul>
+            <li><a href="@Url.Action("Agregar", "EmpleadosClientController")">Agregar Empleado</a></li>
+            <li><a href="@Url.Action("BuscarPorNombre", "UsuarioClientController")">Buscar Empleado</a></li>
+            <li><a href="@Url.Action("AsignarMetodo", "EmpleadoMetodosController")">Asignar Metodo</a></li>
+            <li><a href="@Url.Action("CompletarMetodo", "EmpleadoMetodosController")">Completar Metodo</a></li>
+        </ul>
+    </nav>
 </div>
 
+<!-- Contenedor principal del formulario -->
+<div class="form-container">
+    <h2>Actualizar Empleado</h2>
+
+    @using (Html.BeginForm())
+    {
+        <div class="card">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Id_empleado)
+                @Html.TextBoxFor(model => model.Id_empleado, new { @class = "form-input" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Nombre_empleado)
+                @Html.TextBoxFor(model => model.Nombre_empleado, new { @class = "form-input" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email_empleado)
+                @Html.TextBoxFor(model => model.Email_empleado, new { @class = "form-input" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Posicion_actual)
+                @Html.TextBoxFor(model => model.Posicion_actual, new { @class = "form-input" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Habilidades)
+                @Html.TextBoxFor(model => model.Habilidades, new { @class = "form-input" })
+            </div>
+
+            <button type="submit" class="btn-submit">Actualizar Empleado</button>
+        </div>
+    }
+
+    <!-- Mensaje de éxito o error -->
+    <div class="message">
+        @if (ViewBag.Message != null)
+        {
+            <p>@ViewBag.Message</p>
+        }
+    </div>
+</div>
+
+<!-- Estilos -->
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f7f7f7;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Header */
+    .header {
+        background-color: #1465bb;
+        color: white;
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+        .header h1 {
+            margin: 0;
+            font-weight: normal;
+        }
+
+        .header nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+            .header nav ul li {
+                margin-left: 20px;
+            }
+
+                .header nav ul li a {
+                    color: white;
+                    text-decoration: none;
+                    font-weight: bold;
+                    letter-spacing: 1px;
+                }
+
+                    .header nav ul li a:hover {
+                        color: #003785;
+                    }
+
+    /* Contenedor del formulario */
+    .form-container {
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 30px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+        .form-container h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+    /* Tarjeta con campos de formulario */
+    .card {
+        background: linear-gradient(to right, #1465bb, #003785);
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+        .form-group label {
+            display: block;
+            color: white;
+            margin-bottom: 10px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+    .form-input {
+        width: 100%;
+        padding: 12px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        background-color: #fff;
+        font-size: 16px;
+    }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #003785;
+        }
+
+    /* Botón de envío */
+    .btn-submit {
+        width: 100%;
+        padding: 15px;
+        background-color: #1465bb;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-submit:hover {
+            background-color: #003785;
+        }
+
+    /* Estilos para los mensajes */
+    .message {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 16px;
+    }
+
+        .message p {
+            font-weight: bold;
+            color: #ff0000;
+        }
+</style>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -6,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using Talent_Hub.Client;
 using Talent_Hub.Models;
+using Talent_Hub.Service;
 
 namespace Talent_Hub.Client_Controller
 {
@@ -17,7 +19,6 @@ namespace Talent_Hub.Client_Controller
         {
             _empleadosClient = new EmpleadosClient();
         }
-        // GET: EmpleadosClient
         public ActionResult AddEmpleado()
         {
             return View();
@@ -26,13 +27,16 @@ namespace Talent_Hub.Client_Controller
         [HttpPost]
         public async Task<ActionResult> AddEmpleado(Empleado empleado)
         {
-            if (ModelState.IsValid)
+            if (empleado == null || string.IsNullOrEmpty(empleado.Nombre_empleado) || string.IsNullOrEmpty(empleado.Email_empleado)
+                || string.IsNullOrEmpty(empleado.Posicion_actual) || string.IsNullOrEmpty(empleado.Habilidades))
             {
-                var result = await _empleadosClient.AddEmpleado(empleado);
-                ViewBag.Message = result;
+                ViewBag.Message = "Ingrese todos los datos solicitados";
                 return View();
             }
-            return View(empleado);
+            var result = await _empleadosClient.AddEmpleado(empleado);
+            ViewBag.Message = "Empleado Agreado Correctamente";
+            ViewBag.Empleados = result;
+            return View();
         }
 
         public async Task<ActionResult> BuscarPorNombre(string nombre)
@@ -43,11 +47,12 @@ namespace Talent_Hub.Client_Controller
                 return View();
             }
             var result = await _empleadosClient.BuscarPorNombre(nombre);
-            ViewBag.Empleados = result;
+            var empleado = JsonConvert.DeserializeObject<List<Empleado>>(result);
+            ViewBag.Empleados = empleado;
             return View();
         }
 
-        public ActionResult UpdateEmpleado(int id)
+        public ActionResult UpdateEmpleado()
         {
             return View();
         }
@@ -85,7 +90,13 @@ namespace Talent_Hub.Client_Controller
         [HttpPost]
         public async Task<ActionResult> CompletarMetodo(int idCompletado)
         {
+            if (idCompletado > 0)
+            {
+                ViewBag.Message = "Por Favor, ingrese el Id del Metodo que desea marcar como completado";
+                return View();
+            }
             var result = await _empleadosClient.CompletarMetodo(idCompletado);
+
             ViewBag.Message = result;
             return View();
         }

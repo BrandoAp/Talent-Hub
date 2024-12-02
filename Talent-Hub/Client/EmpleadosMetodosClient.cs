@@ -19,7 +19,7 @@ namespace Talent_Hub.Client
 
         public async Task<string> ObtenerEmpleadosConMetodosAsignados()
         {
-            var response = await _httpClient.GetAsync($"{_url}/obtenerEmpleadosConMetodosAsignados");
+            var response = await _httpClient.GetAsync($"{_url}/asignados");
 
             if (response.IsSuccessStatusCode)
             {
@@ -31,7 +31,7 @@ namespace Talent_Hub.Client
 
         public async Task<string> ObtenerEmpleadosConMetodosCompletados()
         {
-            var response = await _httpClient.GetAsync($"{_url}/obtenerEmpleadosConMetodosCompletados");
+            var response = await _httpClient.GetAsync($"{_url}/completados");
 
             if (response.IsSuccessStatusCode)
             {

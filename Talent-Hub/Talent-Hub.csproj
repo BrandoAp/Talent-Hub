@@ -277,18 +277,12 @@
     <Content Include="Content\Site.css" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\UsuarioClient\Registrar.cshtml" />
     <Content Include="Views\UsuarioClient\Login.cshtml" />
     <Content Include="Views\RequisitosPuesto\Agregar.cshtml" />
     <Content Include="Views\PosicionesDisponibles\AgregarPosicion.cshtml" />
     <Content Include="Views\PosicionesDisponibles\UpdatePosicion.cshtml" />
     <Content Include="Views\PosicionesDisponibles\BuscarPorNombre.cshtml" />
-    <Content Include="Views\MetodosDesarrollo\AgregarMetodo.cshtml" />
-    <Content Include="Views\MetodosDesarrollo\ActualizarMetodo.cshtml" />
-    <Content Include="Views\MetodosDesarrollo\BuscarPorNombre.cshtml" />
     <Content Include="Views\EmpleadosMetodos\ObtenerConMetodosAsignados.cshtml" />
     <Content Include="Views\EmpleadosMetodos\ObtenerConMetodosCompletados.cshtml" />
     <Content Include="Views\EmpleadosClient\AddEmpleado.cshtml" />
@@ -296,6 +290,10 @@
     <Content Include="Views\EmpleadosClient\UpdateEmpleado.cshtml" />
     <Content Include="Views\EmpleadosClient\AsignarMetodo.cshtml" />
     <Content Include="Views\EmpleadosClient\CompletarMetodo.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\MetodosDesarrollo\Actualizar.cshtml" />
+    <Content Include="Views\MetodosDesarrollo\Agregar.cshtml" />
+    <Content Include="Views\MetodosDesarrollo\Buscar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

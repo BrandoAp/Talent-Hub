@@ -1,35 +1,183 @@
 ﻿@model Talent_Hub.Models.Empleado
 
 @{
-    ViewBag.Title = "AddEmpleado";
+    ViewBag.Title = "Agregar Empleado";
+    Layout = null;
 }
 
-<h2>Agregar Nuevo Empleado</h2>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
 
-@using (Html.BeginForm())
-{
-    @Html.LabelFor(model => model.Nombre_empleado)
-    @Html.TextBoxFor(model => model.Nombre_empleado)
-    <br />
+        header {
+            background-color: #1465bb;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    @Html.LabelFor(model => model.Email_empleado)
-    @Html.TextBoxFor(model => model.Email_empleado)
-    <br />
+            header h1 {
+                margin: 0;
+            }
 
-    @Html.LabelFor(model => model.Posicion_actual)
-    @Html.TextBoxFor(model => model.Posicion_actual)
-    <br />
+        .navbar {
+            background-color: #003785;
+            overflow: hidden;
+        }
 
-    @Html.LabelFor(model => model.Habilidades)
-    @Html.TextBoxFor(model => model.Habilidades)
-    <br />
+            .navbar a {
+                float: left;
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 20px;
+                text-decoration: none;
+                font-size: 16px;
+            }
 
-    <input type="submit" value="Agregar Empleado" />
-}
+                .navbar a:hover {
+                    background-color: #1465bb;
+                }
 
-<div>
-    @if (ViewBag.Message != null)
-    {
-        <p>@ViewBag.Message</p>
-    }
-</div>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            min-height: 80vh;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 800px;
+        }
+
+            .form-container h2 {
+                color: #1465bb;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+        form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 20px;
+        }
+
+            form div {
+                margin-bottom: 10px;
+            }
+
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="email"] {
+            width: 95%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+
+        input[type="submit"] {
+            background-color: #1465bb;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            margin-top: 20px;
+            
+        }
+
+            input[type="submit"]:hover {
+                background-color: #003785;
+            }
+
+        .message {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Talent Hub</h1>
+    </header>
+
+    <div class="navbar">
+        <a href="/">Inicio</a>
+        <a href="/EmpleadosClient/AddEmpleado">Agregar Empleado</a>
+        <a href="/EmpleadosClient/VerEmpleados">Ver Empleados</a>
+        <a href="/UsuarioClient/Registrar">Registrar Usuario</a>
+        <a href="/UsuarioClient/Login">Login</a>
+    </div>
+
+    <div class="container">
+        <div class="form-container">
+            <h2>Agregar Nuevo Empleado</h2>
+
+            @using (Html.BeginForm())
+            {
+                <form>
+                    <div>
+                        @Html.LabelFor(model => model.Nombre_empleado)
+                        @Html.TextBoxFor(model => model.Nombre_empleado)
+                    </div>
+
+                    <div>
+                        @Html.LabelFor(model => model.Email_empleado)
+                        @Html.TextBoxFor(model => model.Email_empleado)
+                    </div>
+
+                    <div>
+                        @Html.LabelFor(model => model.Posicion_actual)
+                        @Html.TextBoxFor(model => model.Posicion_actual)
+                    </div>
+
+                    <div>
+                        @Html.LabelFor(model => model.Habilidades)
+                        @Html.TextBoxFor(model => model.Habilidades)
+                    </div>
+
+                    
+                      <input type="submit" value="Agregar Empleado" />
+                </form>
+            }
+
+            <div class="message">
+                @if (ViewBag.Message != null)
+                {
+                    <p>@ViewBag.Message</p>
+                }
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

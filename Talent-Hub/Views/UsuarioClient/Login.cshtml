@@ -2,23 +2,121 @@
 
 @{
     ViewBag.Title = "Login";
+    Layout = null; // Opcional si deseas un diseño completamente limpio.
 }
 
-<h2>Login</h2>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+        }
 
-@using (Html.BeginForm())
-{
-    <div>
-        <label for="Nombre_usuario">Nombre de Usuario:</label>
-        @Html.TextBoxFor(m => m.Nombre_usuario)
+        .login-container {
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+            .login-container h2 {
+                margin-bottom: 20px;
+                color: #333333;
+                font-size: 24px;
+            }
+
+            .login-container label {
+                display: block;
+                text-align: left;
+                margin-bottom: 5px;
+                font-size: 14px;
+                color: #555555;
+            }
+
+            .login-container input {
+                width: 95%;
+                padding: 10px;
+                margin-bottom: 15px;
+                border: 1px solid #cccccc;
+                border-radius: 5px;
+                font-size: 14px;
+            }
+
+            .login-container button {
+                width: 100%;
+                padding: 10px;
+                background-color: #1465bb;
+                border: none;
+                border-radius: 5px;
+                color: #ffffff;
+                font-size: 16px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+
+                .login-container button:hover {
+                    background-color: #003785;
+                }
+
+            .login-container a {
+                display: block;
+                margin-top: 15px;
+                color: #007bff;
+                text-decoration: none;
+                font-size: 14px;
+            }
+
+                .login-container a:hover {
+                    text-decoration: underline;
+                }
+
+        .message {
+            margin-top: 10px;
+            font-size: 14px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+
+        @using (Html.BeginForm())
+        {
+            <div>
+                <label for="Nombre_usuario">Nombre de Usuario:</label>
+                @Html.TextBoxFor(m => m.Nombre_usuario, new { placeholder = "Ingrese su usuario" })
+            </div>
+
+            <div>
+                <label for="Contrasena">Contraseña:</label>
+                @Html.PasswordFor(m => m.Contrasena, new { placeholder = "Ingrese su contraseña" })
+            </div>
+
+            <button type="submit">Iniciar sesión</button>
+        }
+
+        <a href="@Url.Action("Registrar", "UsuarioClient")">¿No tienes cuenta? Regístrate aquí</a>
+
+        @if (!string.IsNullOrEmpty(ViewBag.Message as string))
+        {
+            <p class="message">@ViewBag.Message</p>
+        }
     </div>
+</body>
+</html>
 
-    <div>
-        <label for="Contrasena">Contraseña:</label>
-        @Html.PasswordFor(m => m.Contrasena)
-    </div>
-
-    <button type="submit">Iniciar sesión</button>
-}
-
-<p>@ViewBag.Message</p>

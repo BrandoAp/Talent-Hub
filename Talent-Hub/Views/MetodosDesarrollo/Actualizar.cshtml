@@ -1,0 +1,144 @@
+﻿@model Talent_Hub.Models.Metodos_Desarrollo
+
+@{
+    ViewBag.Title = "Actualizar Metodo de Desarrollo";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #1465bb;
+            color: #fff;
+            padding: 15px 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+            header a {
+                color: #fff;
+                margin: 0 10px;
+                text-decoration: none;
+            }
+
+                header a:hover {
+                    text-decoration: underline;
+                }
+
+        h2 {
+            color: #1465bb;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .form-container {
+            width: 80%;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+            .form-container div {
+                margin-bottom: 15px;
+            }
+
+            .form-container label {
+                display: block;
+                margin-bottom: 5px;
+                font-weight: bold;
+                color: #333;
+            }
+
+            .form-container input[type="text"] {
+                width: 100%;
+                padding: 8px;
+                margin-top: 5px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+            }
+
+            .form-container button {
+                width: 100%;
+                padding: 10px;
+                background-color: #1465bb;
+                color: #fff;
+                border: none;
+                border-radius: 4px;
+                font-size: 16px;
+                cursor: pointer;
+            }
+
+                .form-container button:hover {
+                    background-color: #003785;
+                }
+
+            .form-container p {
+                text-align: center;
+                color: #666;
+            }
+    </style>
+</head>
+<body>
+    <header>
+        <div>
+            <span>Talent Hub - Gestión de Métodos de Desarrollo</span>
+            <div>
+                <a href="/home">Inicio</a>
+                <a href="/metodos">Métodos</a>
+                <a href="/empleados">Empleados</a>
+            </div>
+        </div>
+    </header>
+
+    <h2>Actualizar Método de Desarrollo</h2>
+
+    <div class="form-container">
+        @using (Html.BeginForm())
+        {
+            <div>
+                <label for="Id_metodo">ID del Método:</label>
+                @Html.TextBoxFor(m => m.Id_metodo)
+            </div>
+
+            <div>
+                <label for="Nombre_metodo">Nombre del Método:</label>
+                @Html.TextBoxFor(m => m.Nombre_metodo)
+            </div>
+
+            <div>
+                <label for="Descripcion">Descripción:</label>
+                @Html.TextBoxFor(m => m.Descripcion)
+            </div>
+
+            <div>
+                <label for="Habilidades_desarrolla">Habilidades Desarrolladas:</label>
+                @Html.TextBoxFor(m => m.Habilidades_desarrolla)
+            </div>
+
+            <button type="submit">Actualizar Método</button>
+        }
+
+        <p>@ViewBag.Message</p>
+    </div>
+</body>
+</html>
+
+

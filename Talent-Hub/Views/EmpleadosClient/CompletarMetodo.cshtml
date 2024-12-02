@@ -1,23 +1,154 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "CompletarMetodo";
+    Layout = null;
 }
 
-<h2>Completar Metodo de Desarrollo</h2>
-
-@using (Html.BeginForm())
-{
-    @Html.Label("ID del Metodo Completado")
-    @Html.TextBox("idCompletado")
-    <br />
-
-    <input type="submit" value="Completar Metodo" />
-}
-
-<div>
-    @if (ViewBag.Message != null)
-    {
-        <p>@ViewBag.Message</p>
-    }
+<!-- Header con el nombre de la aplicación y el navbar -->
+<div class="header">
+    <h1>Talent Hub</h1>
+    <nav>
+        <ul>
+            <li><a href="@Url.Action("AddEmpleado", "EmpleadosClient")">Agregar Empleado</a></li>
+            <li><a href="@Url.Action("BuscarPorNombre", "EmpleadosClient")">Buscar Empleado</a></li>
+            <li><a href="@Url.Action("AsignarMetodo", "EmpleadosClient")">Asignar Metodo</a></li>
+        </ul>
+    </nav>
 </div>
 
+<!-- Contenedor principal del formulario -->
+<div class="form-container">
+    <h2>Completar Metodo de Desarrollo</h2>
+
+    @using (Html.BeginForm())
+    {
+        <div class="form-group">
+            @Html.Label("ID del Metodo Completado")
+            @Html.TextBox("idCompletado", null, new { @class = "form-input" })
+        </div>
+
+        <button type="submit" class="btn-submit">Completar Metodo</button>
+    }
+
+    <!-- Mensaje de éxito o error -->
+    <div class="message">
+        @if (ViewBag.Message != null)
+        {
+            <p>@ViewBag.Message</p>
+        }
+    </div>
+</div>
+
+<!-- Estilos -->
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
+
+    /* Header */
+    .header {
+        background-color: #1465bb;
+        color: white;
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+        .header h1 {
+            margin: 0;
+        }
+
+        .header nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+            .header nav ul li {
+                margin-left: 20px;
+            }
+
+                .header nav ul li a {
+                    color: white;
+                    text-decoration: none;
+                    font-weight: bold;
+                }
+
+                    .header nav ul li a:hover {
+                        color: #003785;
+                    }
+
+    /* Contenedor del formulario */
+    .form-container {
+        max-width: 600px;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+        .form-container h2 {
+            margin-top: 0;
+            color: #333;
+        }
+
+    /* Estilos para el formulario */
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+    .form-input {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+        .form-input:focus {
+            border-color: #1465bb;
+            outline: none;
+        }
+
+    /* Botón de envío */
+    .btn-submit {
+        width: 100%;
+        padding: 12px;
+        background-color: #1465bb;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+        .btn-submit:hover {
+            background-color: #003785;
+        }
+
+    /* Estilos para los mensajes */
+    .message {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+        .message p {
+            font-weight: bold;
+            color: #ff0000;
+        }
+</style>

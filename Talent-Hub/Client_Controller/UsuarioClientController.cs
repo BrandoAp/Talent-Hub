@@ -6,16 +6,19 @@ using System.Web;
 using System.Web.Mvc;
 using Talent_Hub.Client;
 using Talent_Hub.Models;
+using Talent_Hub.Service;
 
 namespace Talent_Hub.Client_Controller
 {
     public class UsuarioClientController : Controller
     {
         private readonly UsuarioClient _usuarioClient;
+        private readonly UsuarioService usuarioService;
 
         public UsuarioClientController()
         {
             _usuarioClient = new UsuarioClient();
+            usuarioService = new UsuarioService();
         }
         public ActionResult Registrar()
         {
@@ -42,13 +45,19 @@ namespace Talent_Hub.Client_Controller
         [HttpPost]
         public async Task<ActionResult> Login(Usuario usuario)
         {
-            if (ModelState.IsValid)
+            if (usuario == null || string.IsNullOrEmpty(usuario.Nombre_usuario) || string.IsNullOrEmpty(usuario.Contrasena))
             {
-                var result = await _usuarioClient.Login(usuario);
-                ViewBag.Message = result;
+                ViewBag.Message = "Ingrese todos los datos";
                 return View();
             }
-            return View(usuario);
+            bool isValid = usuarioService.login(usuario.Nombre_usuario, usuario.Contrasena);
+            if (isValid)
+                return RedirectToAction("AddEmpleado", "EmpleadosClient");
+            else
+            {
+                ViewBag.Message = "Credenciales Incorrectas";
+                return View();
+            }
         }
 
         [HttpGet]

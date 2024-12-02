@@ -1,22 +1,208 @@
-﻿
-@{
-    ViewBag.Title = "BuscarPorNombre";
+﻿@{
+    ViewBag.Title = "Buscar Empleado";
+    Layout = null;
 }
 
-<h2>Buscar Empleado</h2>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
 
-@using (Html.BeginForm())
-{
-    @Html.Label("Nombre")
-    @Html.TextBox("nombre")
-    <input type="submit" value="Buscar" />
-}
+        header {
+            background-color: #1465bb;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-<div>
-    @if (ViewBag.Empleados != null)
-    {
-        <p>Resultado de búsqueda:</p>
-        <pre>@ViewBag.Empleados</pre>
-    }
-</div>
+            header h1 {
+                margin: 0;
+            }
 
+        .navbar {
+            background-color: #003785;
+            overflow: hidden;
+        }
+
+            .navbar a {
+                float: left;
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 20px;
+                text-decoration: none;
+                font-size: 16px;
+            }
+
+                .navbar a:hover {
+                    background-color: #1465bb;
+                }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            min-height: 80vh;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 30%;
+        }
+        .result-container {
+            padding: 30px;
+            width: 70%;
+        }
+
+        .form-container h2, .result-container h2 {
+            color: #1465bb;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+            form div {
+                margin-bottom: 10px;
+            }
+
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        input[type="submit"] {
+            background-color: #1465bb;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+            input[type="submit"]:hover {
+                background-color: #003785;
+            }
+
+        .message {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #e74c3c;
+        }
+
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+            .results-table th, .results-table td {
+                padding: 10px;
+                border: 1px solid #ddd;
+                text-align: left;
+            }
+
+            .results-table th {
+                background-color: #1465bb;
+                color: white;
+            }
+
+            .results-table tr:nth-child(even) {
+                background-color: #f9f9f9;
+            }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Talent Hub</h1>
+    </header>
+
+    <div class="navbar">
+        <a href="/">Inicio</a>
+        <a href="/EmpleadosClient/AddEmpleado">Agregar Empleado</a>
+        <a href="/EmpleadosClient/VerEmpleados">Ver Empleados</a>
+        <a href="/UsuarioClient/Registrar">Registrar Usuario</a>
+        <a href="/UsuarioClient/Login">Login</a>
+    </div>
+
+    <div class="container">
+        <div class="form-container">
+            <h2>Buscar Empleado</h2>
+
+            @using (Html.BeginForm())
+            {
+                <form>
+                    <div>
+                        @Html.Label("Nombre")
+                        @Html.TextBox("nombre")
+                    </div>
+
+                    <input type="submit" value="Buscar" />
+                </form>
+            }
+        </div>
+
+        <div class="result-container">
+            <h2>Resultado de la Búsqueda</h2>
+
+            @if (ViewBag.Empleados != null && ViewBag.Empleados.Count > 0)
+            {
+                <table class="results-table">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>Posición</th>
+                            <th>Habilidades</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var empleado in ViewBag.Empleados)
+                        {
+                            <tr>
+                                <td>@empleado.Nombre_empleado</td>
+                                <td>@empleado.Email_empleado</td>
+                                <td>@empleado.Posicion_actual</td>
+                                <td>@empleado.Habilidades</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <p>No se encontraron empleados con ese nombre.</p>
+            }
+        </div>
+    </div>
+
+</body>
+</html>

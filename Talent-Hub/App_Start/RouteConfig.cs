@@ -16,7 +16,7 @@ namespace Talent_Hub
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "UsuarioClient", action = "Login", id = UrlParameter.Optional }
             );
         }
     }
