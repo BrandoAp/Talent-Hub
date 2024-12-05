@@ -1,7 +1,7 @@
 ﻿@model Talent_Hub.Models.Posiciones_Disponibles
 
 @{
-    ViewBag.Title = "Agregar Posición";
+    ViewBag.Title = "Actualizar Posición";
     Layout = null;
 }
 
@@ -107,18 +107,23 @@
     <header>
         <h1>Talent Hub</h1>
         <nav>
-            <a href="/">Inicio</a>
-            <a href="@Url.Action("Buscar", "PosicionesDisponibles")">Buscar Posicion</a>
-            <a href="@Url.Action("Update", "PosicionesDisponibles")">Actualizar Posicion</a>
+            <a href="@Url.Action("AgregarPosicion", "PosicionesDisponibles")">Agregar Posición</a>
+            <a href="@Url.Action("Buscar", "PosicionesDisponibles")">Buscar Posición</a>
+            <a href="@Url.Action("VerTodas", "PosicionesDisponibles")">Ver Posiciones</a>
         </nav>
     </header>
 
     <main>
-        <h2>Agregar Posición</h2>
+        <h2>Actualizar Posición</h2>
 
         @using (Html.BeginForm())
         {
             <form>
+                <div>
+                    <label for="Id_puesto">ID del Puesto:</label>
+                    @Html.TextBoxFor(m => m.Id_puesto, new { @readonly = "readonly" })
+                </div>
+
                 <div>
                     <label for="Nombre_puesto">Nombre del Puesto:</label>
                     @Html.TextBoxFor(m => m.Nombre_puesto)
@@ -129,7 +134,7 @@
                     @Html.TextBoxFor(m => m.Departamento)
                 </div>
 
-                <button type="submit">Agregar Posición</button>
+                <button type="submit">Actualizar Posición</button>
             </form>
         }
 

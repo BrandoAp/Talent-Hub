@@ -39,6 +39,25 @@ namespace Talent_Hub.Client_Controller
             return View();
         }
 
+        [HttpGet]      
+        public async Task<ActionResult> listarEmpleados()
+        {
+            var result = await _empleadosClient.listarEmpleados();
+            System.Diagnostics.Debug.WriteLine("Contenido de result: " + result);
+
+            try
+            {
+                var empleados = JsonConvert.DeserializeObject<List<Empleado>>(result);
+                ViewBag.Empleados = empleados;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error al desearialisar: {ex.Message}");
+                ViewBag.Error = "Error al procesar los datos recibidos.";
+            }
+            return View();
+        }
+
         public async Task<ActionResult> BuscarPorNombre(string nombre)
         {
             if (string.IsNullOrEmpty(nombre))

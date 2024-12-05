@@ -9,6 +9,7 @@ using Talent_Hub.Service;
 
 namespace Talent_Hub.Controllers
 {
+    [RoutePrefix("api/posiciones")]
     public class PosicionesDisponiblesController : ApiController
     {
         private readonly PosicionesDisponiblesService posicionesDisponiblesService;

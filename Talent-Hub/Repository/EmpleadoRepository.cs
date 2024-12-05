@@ -9,6 +9,7 @@ namespace Talent_Hub.Repository
 {
     public interface EmpleadoRepository
     {
+        List<Empleado> listarEmpleados();
         void añadirEmpleado(Empleado empleado);
         List<Empleado> buscarPorNombre(string Nombre_empleado);
         void UpdateEmpleado(Empleado empleado);

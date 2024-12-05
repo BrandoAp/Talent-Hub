@@ -32,24 +32,25 @@
                 margin: 0;
             }
 
-        .navbar {
-            background-color: #003785;
-            overflow: hidden;
+        ul {
+            display: flex;
+            gap: 1rem;
         }
 
-            .navbar a {
-                float: left;
-                display: block;
-                color: white;
-                text-align: center;
-                padding: 14px 20px;
-                text-decoration: none;
-                font-size: 16px;
-            }
+        li {
+            list-style-type: none;
+        }
 
-                .navbar a:hover {
-                    background-color: #1465bb;
-                }
+        a {
+            text-decoration: none;
+            color: white;
+            align-self: center;
+            font-size: 16px;
+        }
+
+            a:hover {
+                color: #003785;
+            }
 
         .container {
             display: flex;
@@ -128,15 +129,14 @@
 
     <header>
         <h1>Talent Hub</h1>
+        <nav>
+            <ul>
+                <li><a href="@Url.Action("AsignarMetodo", "EmpleadosClient")">Asignar Metodo de Desarrollo</a></li>
+                <li><a href="@Url.Action("AgregarPosicion", "PosicionesDisponibles")">Posicions Disponibles</a></li>
+                <li><a href="@Url.Action("CompletarMetodo", "EmpleadosClient")">Asignar Metodo de Desarrollo Completado</a></li>
+            </ul>
+        </nav>
     </header>
-
-    <div class="navbar">
-        <a href="/">Inicio</a>
-        <a href="/EmpleadosClient/AddEmpleado">Agregar Empleado</a>
-        <a href="/EmpleadosClient/VerEmpleados">Ver Empleados</a>
-        <a href="/UsuarioClient/Registrar">Registrar Usuario</a>
-        <a href="/UsuarioClient/Login">Login</a>
-    </div>
 
     <div class="container">
         <div class="form-container">

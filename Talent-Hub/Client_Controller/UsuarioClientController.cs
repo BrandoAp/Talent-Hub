@@ -52,7 +52,7 @@ namespace Talent_Hub.Client_Controller
             }
             bool isValid = usuarioService.login(usuario.Nombre_usuario, usuario.Contrasena);
             if (isValid)
-                return RedirectToAction("AddEmpleado", "EmpleadosClient");
+                return RedirectToAction("listarEmpleados", "EmpleadosClient");
             else
             {
                 ViewBag.Message = "Credenciales Incorrectas";

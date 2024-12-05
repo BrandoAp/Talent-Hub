@@ -1,5 +1,7 @@
-﻿@{
-    ViewBag.Title = "Buscar Empleado";
+﻿@model Talent_Hub.Models.Posiciones_Disponibles
+
+@{
+    ViewBag.Title = "Buscar Posición Por Nombre";
     Layout = null;
 }
 
@@ -63,16 +65,17 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             width: 30%;
         }
+
         .result-container {
             padding: 30px;
             width: 70%;
         }
 
-        .form-container h2, .result-container h2 {
-            color: #1465bb;
-            text-align: center;
-            margin-bottom: 20px;
-        }
+            .form-container h2, .result-container h2 {
+                color: #1465bb;
+                text-align: center;
+                margin-bottom: 20px;
+            }
 
         form {
             display: flex;
@@ -147,51 +150,44 @@
 
     <div class="navbar">
         <a href="/">Inicio</a>
-        <a href="@Url.Action("AddEmpleado", "EmpleadosClient")">Agregar Empleado</a>
-        <a href="@Url.Action("listarEmpleados")">Ver Empleados</a>
-        <a href="@Url.Action("UpdateEmpleado")">Actualizar Empleado</a>
-        <a href="/UsuarioClient/Login">Login</a>
+        <a href="@Url.Action("AgregarPosicion", "PosicionesDisponibles")">Agregar Posición</a>
+        <a href="@Url.Action("Update", "PosicionesDisponibles")">Actualizar Posición</a>
+        <a href="@Url.Action("Buscar", "MetodosDesarrollo")">Ver Posiciones</a>
     </div>
 
     <div class="container">
         <div class="form-container">
-            <h2>Buscar Empleado</h2>
+            <h2>Buscar Posición</h2>
 
             @using (Html.BeginForm())
             {
-                <form>
-                    <div>
-                        @Html.Label("Nombre")
-                        @Html.TextBox("nombre")
-                    </div>
+                <div>
+                    @Html.Label("Nombre de la Posición")
+                    @Html.TextBox("nombre")
+                </div>
 
-                    <input type="submit" value="Buscar" />
-                </form>
+                <input type="submit" value="Buscar" />
             }
         </div>
 
         <div class="result-container">
             <h2>Resultado de la Búsqueda</h2>
 
-            @if (ViewBag.Empleados != null && ViewBag.Empleados.Count > 0)
+            @if (ViewBag.Posiciones != null && ViewBag.Posiciones.Count > 0)
             {
                 <table class="results-table">
                     <thead>
                         <tr>
                             <th>Nombre</th>
-                            <th>Email</th>
-                            <th>Posición</th>
-                            <th>Habilidades</th>
+                            <th>Departamento</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var empleado in ViewBag.Empleados)
+                        @foreach (var posicion in ViewBag.Posiciones)
                         {
                             <tr>
-                                <td>@empleado.Nombre_empleado</td>
-                                <td>@empleado.Email_empleado</td>
-                                <td>@empleado.Posicion_actual</td>
-                                <td>@empleado.Habilidades</td>
+                                <td>@posicion.Nombre_puesto</td>
+                                <td>@posicion.Departamento</td>
                             </tr>
                         }
                     </tbody>
@@ -199,7 +195,7 @@
             }
             else
             {
-                <p>No se encontraron empleados con ese nombre.</p>
+                <p>No se encontraron posiciones con ese nombre.</p>
             }
         </div>
     </div>

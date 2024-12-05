@@ -33,6 +33,15 @@ namespace Talent_Hub.Client
             return $"Error: {response.StatusCode} - {response.ReasonPhrase}";
         }
 
+        public async Task<string> listarEmpleados()
+        {
+            var response = await _httpClient.GetAsync($"{_url}/listarEmpleados");
+            if (response.IsSuccessStatusCode)
+                return await response.Content.ReadAsStringAsync();
+
+            return $"Error: {response.StatusCode} - {response.ReasonPhrase}";
+        }
+
         public async Task<string> BuscarPorNombre(string nombre)
         {
             var response = await _httpClient.GetAsync($"{_url}/buscar/{nombre}");

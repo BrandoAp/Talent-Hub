@@ -1,0 +1,160 @@
+﻿@{
+    ViewBag.Title = "Lista de Empleados";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #1465bb;
+            color: #fff;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+            header h1 {
+                margin: 0;
+                font-size: 24px;
+            }
+
+        nav {
+            display: flex;
+            gap: 15px;
+        }
+
+            nav a {
+                color: #fff;
+                text-decoration: none;
+                font-size: 16px;
+            }
+
+                nav a:hover {
+                    text-decoration: underline;
+                }
+
+        main {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h2 {
+            color: #1465bb;
+            text-align: center;
+        }
+
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+
+        .alert-danger {
+            color: #a94442;
+            background-color: #f2dede;
+            border-color: #ebccd1;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #1465bb;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        p {
+            text-align: center;
+            font-size: 16px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Talent Hub</h1>
+        <nav>
+            <a href="/">Inicio</a>
+            <a href="@Url.Action("AddEmpleado", "EmpleadosClient")">Agregar Empleado</a>
+            <a href="@Url.Action("BuscarPorNombre", "EmpleadosClient")">Buscar por Nombre</a>
+            <a href="@Url.Action("UpdateEmpleado", "EmpleadosClient")">Actualizar Empleado</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>@ViewBag.Title</h2>
+
+        @if (ViewBag.Error != null)
+        {
+            <div class="alert alert-danger">
+                <strong>Error:</strong> @ViewBag.Error
+            </div>
+        }
+        else if (ViewBag.Empleados != null)
+        {
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th>Posición</th>
+                        <th>Habilidades</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var empleado in ViewBag.Empleados)
+                    {
+                        <tr>
+                            <td>@empleado.Nombre_empleado</td>
+                            <td>@empleado.Email_empleado</td>
+                            <td>@empleado.Posicion_actual</td>
+                            <td>@empleado.Habilidades</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p>No hay empleados para mostrar.</p>
+        }
+    </main>
+</body>
+</html>

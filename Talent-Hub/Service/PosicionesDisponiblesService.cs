@@ -80,10 +80,10 @@ namespace Talent_Hub.Service
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    string query = "SELECT * FROM Posiciones_Disponibles WHERE Nombre_pues = @Nombre_puesto";
+                    string query = "SELECT * FROM Posiciones_Disponibles WHERE Nombre_puesto LIKE @Nombre_puesto";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@Nombre_puesto", "%" + nombre_posicion + "%");
+                        command.Parameters.AddWithValue("@Nombre_puesto", $"%{nombre_posicion}%");
                         connection.Open();
                         SqlDataReader reader = command.ExecuteReader();
                         while (reader.Read())

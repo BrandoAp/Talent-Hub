@@ -7,13 +7,14 @@ using System.Text;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
 using Talent_Hub.Models;
+using System.Security.Policy;
 
 namespace Talent_Hub.Client
 {
     public class PosicionesDisponiblesClient
     {
         private HttpClient _httpClient;
-        private readonly string _url = "https://localhost:44374/api/posicionesDisponibles";
+        private readonly string _url = "https://localhost:44374/api/posiciones";
 
         public PosicionesDisponiblesClient()
         {
@@ -48,7 +49,8 @@ namespace Talent_Hub.Client
 
         public async Task<string> BuscarPosicionPorNombre(string nombre)
         {
-            var response = await _httpClient.GetAsync($"{_url}/buscar/{nombre}");
+            var encodedName = Uri.EscapeDataString(nombre);
+            var response = await _httpClient.GetAsync($"{_url}/buscar/{encodedName}");
 
             if (response.IsSuccessStatusCode)
                 return await response.Content.ReadAsStringAsync();

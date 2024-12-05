@@ -281,8 +281,6 @@
     <Content Include="Views\UsuarioClient\Login.cshtml" />
     <Content Include="Views\RequisitosPuesto\Agregar.cshtml" />
     <Content Include="Views\PosicionesDisponibles\AgregarPosicion.cshtml" />
-    <Content Include="Views\PosicionesDisponibles\UpdatePosicion.cshtml" />
-    <Content Include="Views\PosicionesDisponibles\BuscarPorNombre.cshtml" />
     <Content Include="Views\EmpleadosMetodos\ObtenerConMetodosAsignados.cshtml" />
     <Content Include="Views\EmpleadosMetodos\ObtenerConMetodosCompletados.cshtml" />
     <Content Include="Views\EmpleadosClient\AddEmpleado.cshtml" />
@@ -294,6 +292,9 @@
     <Content Include="Views\MetodosDesarrollo\Actualizar.cshtml" />
     <Content Include="Views\MetodosDesarrollo\Agregar.cshtml" />
     <Content Include="Views\MetodosDesarrollo\Buscar.cshtml" />
+    <Content Include="Views\EmpleadosClient\listarEmpleados.cshtml" />
+    <Content Include="Views\PosicionesDisponibles\Update.cshtml" />
+    <Content Include="Views\PosicionesDisponibles\Buscar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

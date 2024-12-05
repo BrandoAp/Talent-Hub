@@ -43,6 +43,42 @@ namespace Talent_Hub.Service
                 Console.WriteLine($"Error al insertar un nuevo empleado: {ex.Message}");
             }
         }
+
+        public List<Empleado> listarEmpleados()
+        {
+            List<Empleado> empleados = new List<Empleado>();
+
+            try
+            {
+                using(SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string query = "SELECT * FROM Empleados";
+                    using(SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        connection.Open();
+                        using(SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                empleados.Add(new Empleado
+                                {
+                                    Id_empleado = Convert.ToInt32(reader["Id_empleado"]),
+                                    Nombre_empleado = reader["Nombre_empleado"].ToString(),
+                                    Email_empleado = reader["Email_empleado"].ToString(),
+                                    Posicion_actual = reader["Posicion_actual"].ToString(),
+                                    Habilidades = reader["Habilidades"].ToString()
+                                });
+                            }
+                        }
+                    }
+                }
+            } catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+            return empleados;
+        }
+
         public List<Empleado> buscarPorNombre(string Nombre_empleado)
         {
             List<Empleado> empleados = new List<Empleado>();

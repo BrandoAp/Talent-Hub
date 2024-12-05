@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Headers;
@@ -70,8 +71,16 @@ namespace Talent_Hub.Client_Controller
             }
 
             var result = await _posicionesDisponiblesClient.BuscarPosicionPorNombre(nombre);
-            ViewBag.Message = result;
-            return View();
+            try
+            {
+                var posiciones = JsonConvert.DeserializeObject<List<Posiciones_Disponibles>>(result);
+                return View(posiciones);
+            }
+            catch
+            {
+                ViewBag.Message = result;
+                return View();
+            }
         }
     }
 }

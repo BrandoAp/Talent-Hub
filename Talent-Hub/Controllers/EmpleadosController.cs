@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Management;
 using Talent_Hub.Models;
 using Talent_Hub.Service;
 
@@ -27,6 +28,17 @@ namespace Talent_Hub.Controllers
 
             empleadoService.añadirEmpleado(empleado);
             return Ok("Empleado agregado exitosamente");
+        }
+
+        [HttpGet]
+        [Route("listarEmpleados")]
+        public IHttpActionResult listarEmpleados()
+        {
+            var empleados = empleadoService.listarEmpleados();
+            if (empleados == null || empleados.Count == 0)
+                return NotFound();
+
+            return Ok(empleados);
         }
 
         [HttpGet]

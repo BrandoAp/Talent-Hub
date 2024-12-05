@@ -92,9 +92,9 @@
         <h1>Talent Hub - Gestión de Métodos de Desarrollo</h1>
         <nav>
             <a href="/">Inicio</a>
-            <a href="/EmpleadosMetodos/ObtenerConMetodosAsignados">Métodos Asignados</a>
-            <a href="/EmpleadosMetodos/ObtenerConMetodosCompletados">Métodos Completados</a>
-            <a href="/UsuarioClient/Login">Login</a>
+            <a href="@Url.Action("CompletarMetodo", "EmpleadosClient")">Completar Método</a>
+            <a href="@Url.Action("AsignarMetodo", "EmpleadosClient")"> Asignar Método</a>
+            <a href="@Url.Action("ObtenerConMetodosAsignados")">Método Asignados</a>
         </nav>
     </header>
 
