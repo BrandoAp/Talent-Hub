@@ -65,7 +65,7 @@ namespace Talent_Hub.Controllers
 
         [HttpPost]
         [Route("asignarMetodo")]
-        public IHttpActionResult AsignarMetodo(int idEmpleado, int idMetodo)
+        public IHttpActionResult AsignarMetodo([FromUri] int idEmpleado, [FromUri] int idMetodo)
         {
             if (idEmpleado <= 0 || idMetodo <= 0)
                 return BadRequest("IDs no validos");

@@ -13,7 +13,7 @@ namespace Talent_Hub.Client
     public class MetodosDesarrolloClient
     {
         private readonly HttpClient _httpClient;
-        private readonly string _url = "https://localhost:44374/api/metodoDesarrollo";
+        private readonly string _url = "https://localhost:44374/api/metodosDesarrollo";
 
         public MetodosDesarrolloClient()
         {
@@ -22,9 +22,7 @@ namespace Talent_Hub.Client
 
         public async Task<string> AgregarMetodo(Metodos_Desarrollo metodo)
         {
-            var jsonContent = JsonConvert.SerializeObject(metodo);
-            var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
-
+            var content = new StringContent(JsonConvert.SerializeObject(metodo), Encoding.UTF8, "application/json");
             var response = await _httpClient.PostAsync($"{_url}/agregar", content);
 
             if (response.IsSuccessStatusCode)

@@ -34,28 +34,22 @@ namespace Talent_Hub.Client
             return $"Error: {response.StatusCode} - {response.ReasonPhrase}";
         }
 
-        public async Task<string> ActualizarPosicion(Posiciones_Disponibles posicion)
+
+        public async Task<List<Posiciones_Disponibles>> BuscarPosicionPorNombre(string nombre)
         {
-            var jsonContent = JsonConvert.SerializeObject(posicion);
-            var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+            try
+            {
+                var encodedName = Uri.EscapeDataString(nombre);
+                var respone = await _httpClient.GetAsync($"{_url}/buscar/{encodedName}");
+                respone.EnsureSuccessStatusCode();
 
-            var response = await _httpClient.PutAsync($"{_url}/update", content);
-
-            if (response.IsSuccessStatusCode)
-                return await response.Content.ReadAsStringAsync();
-
-            return $"Error: {response.StatusCode} - {response.ReasonPhrase}";
-        }
-
-        public async Task<string> BuscarPosicionPorNombre(string nombre)
-        {
-            var encodedName = Uri.EscapeDataString(nombre);
-            var response = await _httpClient.GetAsync($"{_url}/buscar/{encodedName}");
-
-            if (response.IsSuccessStatusCode)
-                return await response.Content.ReadAsStringAsync();
-
-            return $"Error: {response.StatusCode} - {response.ReasonPhrase}";
+                var jsonResult = await respone.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<List<Posiciones_Disponibles>>(jsonResult);
+            }
+            catch (Exception ex) 
+            {
+                throw new Exception($"Error al buscar la posicion: {ex.Message}");
+            }
         }
     }
 }

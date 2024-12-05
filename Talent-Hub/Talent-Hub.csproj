@@ -293,7 +293,6 @@
     <Content Include="Views\MetodosDesarrollo\Agregar.cshtml" />
     <Content Include="Views\MetodosDesarrollo\Buscar.cshtml" />
     <Content Include="Views\EmpleadosClient\listarEmpleados.cshtml" />
-    <Content Include="Views\PosicionesDisponibles\Update.cshtml" />
     <Content Include="Views\PosicionesDisponibles\Buscar.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>

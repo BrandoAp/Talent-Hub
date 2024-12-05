@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Asignar Metodo";
     Layout = null;
 }
@@ -19,28 +18,35 @@
 
 <!-- Formulario de asignación de método a empleado -->
 <div class="form-container">
-    <h2>Asignar Metodo a Empleado</h2>
+    <h2>Asignar Método a Empleado</h2>
 
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("AsignarMetodo", "EmpleadosClient", FormMethod.Post))
     {
         <div class="form-group">
             @Html.Label("ID Empleado")
-            @Html.TextBox("idEmpleado", null, new { @class = "form-input" })
+            @Html.TextBox("idEmpleado", null, new { @class = "form-input", @type = "number", @min = "1", required = "required" })
         </div>
 
         <div class="form-group">
-            @Html.Label("ID Metodo")
-            @Html.TextBox("idMetodo", null, new { @class = "form-input" })
+            @Html.Label("ID Método")
+            @Html.TextBox("idMetodo", null, new { @class = "form-input", @type = "number", @min = "1", required = "required" })
         </div>
 
-        <button type="submit" class="btn-submit">Asignar Metodo</button>
+        <button type="submit" class="btn-submit">Asignar Método</button>
     }
 
     <!-- Mensaje de éxito o error -->
     <div class="message">
         @if (ViewBag.Message != null)
         {
-            <p>@ViewBag.Message</p>
+            if (ViewBag.Message.StartsWith("Error"))
+            {
+                <p style="color: red;">@ViewBag.Message</p>
+            }
+            else
+            {
+                <p style="color: green;">@ViewBag.Message</p>
+            }
         }
     </div>
 </div>
@@ -156,8 +162,5 @@
 
         .message p {
             font-weight: bold;
-            color: #ff0000;
         }
 </style>
-
-

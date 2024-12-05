@@ -92,7 +92,7 @@ namespace Talent_Hub.Service
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@Nombre_metodo", "%" + nombre_metodo + "%");
+                        command.Parameters.AddWithValue("@Nombre_metodo", $"%{nombre_metodo}%");
                         connection.Open();
                         SqlDataReader reader = command.ExecuteReader();
                         while (reader.Read())

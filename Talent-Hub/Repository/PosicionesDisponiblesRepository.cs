@@ -10,7 +10,6 @@ namespace Talent_Hub.Repository
     public interface PosicionesDisponiblesRepository
     {
         void agregarPosicion(Posiciones_Disponibles posiciones_disponibles);
-        void updatePosicion(Posiciones_Disponibles posiciones_Disponibles);
         List<Posiciones_Disponibles> buscarPorNombrePosicion(string nombre_posicion);
     }
 }

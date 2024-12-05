@@ -175,12 +175,12 @@ namespace Talent_Hub.Service
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    string query = "CompletarMetodosDesarrollo";
+                    string query = "CompletarMetodoDesarrollo";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.CommandType = System.Data.CommandType.StoredProcedure;
 
-                        command.Parameters.AddWithValue("@Id_completado", Id_completado);
+                        command.Parameters.AddWithValue("@Id_asignado", Id_completado);
 
                         connection.Open();
                         int rowsAffected = command.ExecuteNonQuery();

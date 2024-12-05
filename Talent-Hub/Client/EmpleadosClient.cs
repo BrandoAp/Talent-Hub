@@ -56,7 +56,7 @@ namespace Talent_Hub.Client
 
         public async Task<string> UpdateEmpleado(Empleado empleado)
         {
-            var content = new StringContent(JsonConvert.SerializeObject(empleado), Encoding.UTF8, "apllication/json");
+            var content = new StringContent(JsonConvert.SerializeObject(empleado), Encoding.UTF8, "application/json");
             var response = await _httpClient.PutAsync($"{_url}/update", content);
 
             if (response.IsSuccessStatusCode)
@@ -69,8 +69,7 @@ namespace Talent_Hub.Client
 
         public async Task<string> AsignarMetodo(int idEmpleado, int idMetodo)
         {
-            var content = new StringContent(JsonConvert.SerializeObject(new { idEmpleado, idMetodo }), Encoding.UTF8, "application/json");
-            var response = await _httpClient.PostAsync($"{_url}/asignarMetodo", content);
+            var response = await _httpClient.PostAsync($"{_url}/asignarMetodo?idEmpleado={idEmpleado}&idMetodo={idMetodo}", null);
 
             if (response.IsSuccessStatusCode)
             {

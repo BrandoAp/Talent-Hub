@@ -38,48 +38,30 @@ namespace Talent_Hub.Client_Controller
             return View(posicion);
         }
 
-        public ActionResult Update()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public async Task<ActionResult> ActualizarPosicion(Posiciones_Disponibles posicion)
-        {
-            if (ModelState.IsValid)
-            {
-                var result = await _posicionesDisponiblesClient.ActualizarPosicion(posicion);
-                ViewBag.Message = result;
-                return View();
-            }
-
-            return View(posicion);
-        }
-
         public ActionResult Buscar()
         {
             return View();
         }
 
-        [HttpPost]
+        [HttpGet]
         public async Task<ActionResult> BuscarPorNombre(string nombre)
         {
             if (string.IsNullOrEmpty(nombre))
             {
                 ViewBag.Message = "Por favor ingrese el nombre de la posición.";
-                return View();
+                return View("Buscar", new List<Posiciones_Disponibles>());
             }
-
-            var result = await _posicionesDisponiblesClient.BuscarPosicionPorNombre(nombre);
             try
             {
-                var posiciones = JsonConvert.DeserializeObject<List<Posiciones_Disponibles>>(result);
-                return View(posiciones);
+                var posiciones = await _posicionesDisponiblesClient.BuscarPosicionPorNombre(nombre);
+                if (posiciones == null || posiciones.Count == 0)
+                    ViewBag.Message = "No se encontraron posiciones con ese nombre.";
+                return View("Buscar", posiciones);
             }
-            catch
+            catch (Exception ex)
             {
-                ViewBag.Message = result;
-                return View();
+                ViewBag.Message = $"Error al obtener los datos {ex.Message}";
+                return View("Buscar", new List<Posiciones_Disponibles>());
             }
         }
     }

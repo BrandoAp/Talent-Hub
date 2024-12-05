@@ -28,9 +28,16 @@ namespace Talent_Hub.Client_Controller
         {
             if (ModelState.IsValid)
             {
-                var result = await metodosDesarrolloClient.AgregarMetodo(metodo);
-                ViewBag.Message = result;
-                return View();
+                try
+                {
+                    var result = await metodosDesarrolloClient.AgregarMetodo(metodo);
+                    ViewBag.Message = "Método agregado correctamente";
+                    return View();
+                } catch (Exception ex)
+                {
+                    ViewBag.Message = $"Error al agregar el metodo: {ex.Message}";
+                    return View(metodo);
+                }
             }
 
             return View(metodo);
@@ -47,7 +54,7 @@ namespace Talent_Hub.Client_Controller
             if (ModelState.IsValid)
             {
                 var result = await metodosDesarrolloClient.ActualizarMetodo(metodo);
-                ViewBag.Message = result;
+                ViewBag.Message = "Método actualizado correctamente";
                 return View();
             }
 
@@ -59,7 +66,7 @@ namespace Talent_Hub.Client_Controller
             return View();
         }
 
-        [HttpPost]
+        [HttpGet]
         public async Task<ActionResult> BuscarPorNombre(string nombre)
         {
             if (string.IsNullOrEmpty(nombre))

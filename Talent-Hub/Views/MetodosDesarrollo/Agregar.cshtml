@@ -111,23 +111,23 @@
     <h2>Agregar Método de Desarrollo</h2>
 
     <div class="form-container">
-        @using (Html.BeginForm())
+        @using (Html.BeginForm("Agregar", "MetodosDesarrollo", FormMethod.Post))
         {
             <div>
                 <label for="Nombre_metodo">Nombre del Método:</label>
                 @Html.TextBoxFor(m => m.Nombre_metodo)
+                @Html.ValidationMessageFor(m => m.Nombre_metodo, "", new { @class = "text-danger" })
             </div>
-
             <div>
                 <label for="Descripcion">Descripción:</label>
                 @Html.TextBoxFor(m => m.Descripcion)
+                @Html.ValidationMessageFor(m => m.Descripcion, "", new { @class = "text-danger" })
             </div>
-
             <div>
                 <label for="Habilidades_desarrolla">Habilidades Desarrolladas:</label>
                 @Html.TextBoxFor(m => m.Habilidades_desarrolla)
+                @Html.ValidationMessageFor(m => m.Habilidades_desarrolla, "", new { @class = "text-danger" })
             </div>
-
             <button type="submit">Agregar Método</button>
         }
 

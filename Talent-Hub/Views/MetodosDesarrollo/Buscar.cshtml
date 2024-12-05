@@ -141,35 +141,37 @@
     <div class="container">
         <!-- Formulario -->
         <div class="form-container">
-            @using (Html.BeginForm())
+            @using (Html.BeginForm("Buscar", "MetodosDesarrollo", FormMethod.Get))
             {
                 <div>
                     <label for="nombre">Nombre del Método:</label>
                     <input type="text" name="nombre" />
                 </div>
-
                 <button type="submit">Buscar</button>
             }
-        </div>
 
-        <!-- Resultados -->
-        <div class="results-container">
-            @if (ViewBag.Resultados != null && ((List<Talent_Hub.Models.Metodos_Desarrollo>)ViewBag.Resultados).Count > 0)
+            @if (ViewBag.Resultados != null)
             {
-                <ul>
-                    @foreach (var item in (List<Talent_Hub.Models.Metodos_Desarrollo>)ViewBag.Resultados)
-                    {
-                        <li>
-                            <strong>@item.Nombre_metodo</strong><br />
-                            <em>@item.Descripcion</em><br />
-                            <span><strong>Habilidades Desarrolladas:</strong> @item.Habilidades_desarrolla</span>
-                        </li>
-                    }
-                </ul>
-            }
-            else
-            {
-                <p class="no-results">No se encontraron resultados para el método buscado.</p>
+                <h3>Resultados de la búsqueda:</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nombre del Método</th>
+                            <th>Descripción</th>
+                            <th>Habilidades Desarrolladas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var metodo in ViewBag.Resultados)
+                        {
+                            <tr>
+                                <td>@metodo.Nombre_metodo</td>
+                                <td>@metodo.Descripcion</td>
+                                <td>@metodo.Habilidades_desarrolla</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
             }
         </div>
     </div>

@@ -1,4 +1,4 @@
-﻿@model Talent_Hub.Models.Posiciones_Disponibles
+﻿@model List<Talent_Hub.Models.Posiciones_Disponibles>
 
 @{
     ViewBag.Title = "Buscar Posición Por Nombre";
@@ -55,27 +55,31 @@
             display: flex;
             justify-content: space-between;
             padding: 20px;
+            gap: 20px;
             min-height: 80vh;
         }
 
-        .form-container {
+        .form-container,
+        .result-container {
             background-color: #fff;
             padding: 30px;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 30%;
+        }
+
+        .form-container {
+            width: 35%;
         }
 
         .result-container {
-            padding: 30px;
-            width: 70%;
+            width: 60%;
         }
 
-            .form-container h2, .result-container h2 {
-                color: #1465bb;
-                text-align: center;
-                margin-bottom: 20px;
-            }
+        h2 {
+            color: #1465bb;
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
         form {
             display: flex;
@@ -107,7 +111,7 @@
             border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
-            margin-top: 20px;
+            margin-top: 10px;
         }
 
             input[type="submit"]:hover {
@@ -116,7 +120,7 @@
 
         .message {
             text-align: center;
-            margin-top: 20px;
+            margin-top: 10px;
             font-size: 14px;
             color: #e74c3c;
         }
@@ -126,7 +130,8 @@
             border-collapse: collapse;
         }
 
-            .results-table th, .results-table td {
+            .results-table th,
+            .results-table td {
                 padding: 10px;
                 border: 1px solid #ddd;
                 text-align: left;
@@ -151,29 +156,24 @@
     <div class="navbar">
         <a href="@Url.Action("Index", "Home")">Inicio</a>
         <a href="@Url.Action("AgregarPosicion", "PosicionesDisponibles")">Agregar Posición</a>
-        <a href="@Url.Action("Update", "PosicionesDisponibles")">Actualizar Posición</a>
-        <a href="@Url.Action("Buscar", "MetodosDesarrollo")">Ver Posiciones</a>
     </div>
 
     <div class="container">
         <div class="form-container">
             <h2>Buscar Posición</h2>
-
-            @using (Html.BeginForm())
+            @using (Html.BeginForm("BuscarPorNombre", "PosicionesDisponibles", FormMethod.Get, new { @aria_label = "Formulario de búsqueda de posición" }))
             {
                 <div>
-                    @Html.Label("Nombre de la Posición")
-                    @Html.TextBox("nombre")
+                    @Html.Label("Nombre de la Posición", new { @aria_label = "Nombre de la Posición" })
+                    @Html.TextBox("nombre", null, new { @placeholder = "Ingrese el nombre..." })
                 </div>
-
                 <input type="submit" value="Buscar" />
             }
         </div>
 
         <div class="result-container">
             <h2>Resultado de la Búsqueda</h2>
-
-            @if (ViewBag.Posiciones != null && ViewBag.Posiciones.Count > 0)
+            @if (Model != null && Model.Count > 0)
             {
                 <table class="results-table">
                     <thead>
@@ -183,7 +183,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var posicion in ViewBag.Posiciones)
+                        @foreach (var posicion in Model)
                         {
                             <tr>
                                 <td>@posicion.Nombre_puesto</td>
@@ -193,9 +193,13 @@
                     </tbody>
                 </table>
             }
+            else if (Model != null)
+            {
+                <p class="message">No se encontraron posiciones con ese nombre.</p>
+            }
             else
             {
-                <p>No se encontraron posiciones con ese nombre.</p>
+                <p class="message">Realice una búsqueda para ver resultados.</p>
             }
         </div>
     </div>

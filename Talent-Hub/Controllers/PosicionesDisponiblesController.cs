@@ -30,16 +30,6 @@ namespace Talent_Hub.Controllers
             return Ok("Nueva Posicion agregada exitosamente.");
         }
 
-        [HttpPut]
-        [Route("update")]
-        public IHttpActionResult UpdatePosicion(Posiciones_Disponibles posiciones)
-        {
-            if (posiciones == null || posiciones.Id_puesto <= 0)
-                return BadRequest("Datos de la posicion no validas.");
-
-            posicionesDisponiblesService.updatePosicion(posiciones);
-            return Ok("Posicion disponibles actualizada exitosamente.");
-        }
 
         [HttpGet]
         [Route("buscar/{nombre}")]

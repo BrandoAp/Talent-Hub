@@ -109,7 +109,7 @@ namespace Talent_Hub.Client_Controller
         [HttpPost]
         public async Task<ActionResult> CompletarMetodo(int idCompletado)
         {
-            if (idCompletado > 0)
+            if (idCompletado < 0)
             {
                 ViewBag.Message = "Por Favor, ingrese el Id del Metodo que desea marcar como completado";
                 return View();
