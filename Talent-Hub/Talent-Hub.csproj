@@ -179,13 +179,13 @@
     <Compile Include="Client\UsuarioClient.cs" />
     <Compile Include="Client_Controller\EmpleadosClientController.cs" />
     <Compile Include="Client_Controller\EmpleadosMetodosController.cs" />
+    <Compile Include="Client_Controller\HomeController.cs" />
     <Compile Include="Client_Controller\MetodosDesarrolloController.cs" />
     <Compile Include="Client_Controller\PosicionesDisponiblesController.cs" />
     <Compile Include="Client_Controller\RequisitosPuestoController.cs" />
     <Compile Include="Client_Controller\UsuarioClientController.cs" />
     <Compile Include="Controllers\EmpleadosController.cs" />
     <Compile Include="Controllers\EmpleadosMetodosController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MetodosDesarrolloController.cs" />
     <Compile Include="Controllers\PosicionesDisponiblesController.cs" />
     <Compile Include="Controllers\RequisitosPuestoController.cs" />
@@ -295,6 +295,7 @@
     <Content Include="Views\EmpleadosClient\listarEmpleados.cshtml" />
     <Content Include="Views\PosicionesDisponibles\Update.cshtml" />
     <Content Include="Views\PosicionesDisponibles\Buscar.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

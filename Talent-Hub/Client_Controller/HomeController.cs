@@ -4,14 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Talent_Hub.Controllers
+namespace Talent_Hub.Client_Controller
 {
     public class HomeController : Controller
     {
+        // GET: Home
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
-
             return View();
         }
     }

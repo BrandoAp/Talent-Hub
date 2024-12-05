@@ -1,0 +1,120 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Talent Hub - Página Inicial</title>
+    <style>
+        /* Estilos globales */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        h1, h2 {
+            color: #1465bb;
+            text-align: center;
+        }
+
+        /* Estilo para el header */
+        header {
+            background-color: #1465bb;
+            padding: 15px 0;
+            color: white;
+            text-align: center;
+        }
+
+            header nav a {
+                color: white;
+                text-decoration: none;
+                margin: 0 20px;
+                font-size: 18px;
+            }
+
+                header nav a:hover {
+                    color: #003785;
+                }
+
+        /* Contenedor principal */
+        .container {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Estilo para las secciones */
+        .section {
+            background-color: #fff;
+            margin: 20px 0;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+            .section h2 {
+                margin-top: 0;
+            }
+
+            .section p {
+                font-size: 16px;
+                line-height: 1.6;
+            }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #1465bb;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="@Url.Action("listarEmpleados", "EmpleadosClient")">Empleados</a>
+            <a href="@Url.Action("ObtenerConMetodosCompletados", "EmpleadosMetodos")"> Gestionar Métodos de Desarrollo</a>
+            <a href="@Url.Action("Agregar", "MetodosDesarrollo")">Métodos de Desarrollo</a>
+            <a href="@Url.Action("AgregarPosicion", "PosicionesDisponibles")">Posiciones</a>
+            <a href="@Url.Action("Agregar", "RequisitosPuesto")">Requisitos</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="section">
+            <h2>Bienvenido a Talent Hub</h2>
+            <p>Talent Hub es una plataforma diseñada para ayudar a las empresas a gestionar su talento, asignar metodologías de desarrollo y crear oportunidades de crecimiento profesional para sus empleados. Desde esta página puedes acceder a distintas funcionalidades de la aplicación.</p>
+        </div>
+
+        <div class="section">
+            <h2>¿Qué puedes hacer?</h2>
+            <ul>
+                <li><strong>Gestionar empleados:</strong> Añadir, listar, actualizar y buscar empleados en tu organización.</li>
+                <li><strong>Desarrollar habilidades:</strong> Asignar y marcar como completados los métodos de desarrollo para tus empleados.</li>
+                <li><strong>Crear oportunidades:</strong> Ver las posiciones disponibles dentro de tu empresa y asignar empleados a ellas.</li>
+                <li><strong>Gestión de usuarios:</strong> Administrar las credenciales de acceso para los usuarios del sistema.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Comienza ahora</h2>
+            <p>Para comenzar a gestionar tus empleados y sus habilidades, simplemente haz clic en las secciones de la parte superior. Cada área te permitirá realizar acciones específicas y facilitar la administración de tu equipo.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Talent Hub. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
+
+
