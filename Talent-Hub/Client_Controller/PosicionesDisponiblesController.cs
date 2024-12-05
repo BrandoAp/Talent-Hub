@@ -19,7 +19,31 @@ namespace Talent_Hub.Client_Controller
         {
             _posicionesDisponiblesClient = new PosicionesDisponiblesClient();
         }
-        // GET: PosicionesDisponibles
+
+        public ActionResult listar()
+        {
+            return View();
+        }
+
+        //[HttpGet]
+        //public async Task<ActionResult> listarPosiciones()
+        //{
+        //    var result = await _posicionesDisponiblesClient.listarPosiciones();
+        //    System.Diagnostics.Debug.WriteLine("Contenido de result: " + result);
+
+        //    try
+        //    {
+        //        var posiciones = JsonConvert.DeserializeObject<List<Posiciones_Disponibles>>(result);
+        //        ViewBag.Posiciones = posiciones;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        System.Diagnostics.Debug.WriteLine($"Error al desearialisar: {ex.Message}");
+        //        ViewBag.Error = "Error al procesar los datos recibidos.";
+        //    }
+
+        //    return View();
+        //}
         public ActionResult AgregarPosicion()
         {
             return View();

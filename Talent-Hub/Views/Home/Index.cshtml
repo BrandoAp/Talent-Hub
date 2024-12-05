@@ -82,9 +82,9 @@
         <nav>
             <a href="@Url.Action("listarEmpleados", "EmpleadosClient")">Empleados</a>
             <a href="@Url.Action("ObtenerConMetodosCompletados", "EmpleadosMetodos")"> Gestionar Métodos de Desarrollo</a>
-            <a href="@Url.Action("Agregar", "MetodosDesarrollo")">Métodos de Desarrollo</a>
-            <a href="@Url.Action("AgregarPosicion", "PosicionesDisponibles")">Posiciones</a>
-            <a href="@Url.Action("Agregar", "RequisitosPuesto")">Requisitos</a>
+            @*<a href="@Url.Action("Agregar", "MetodosDesarrollo")">Métodos de Desarrollo</a>*@
+            <a href="@Url.Action("Buscar", "PosicionesDisponibles")">Posiciones</a>
+            @*<a href="@Url.Action("Agregar", "RequisitosPuesto")">Requisitos</a>*@
         </nav>
     </header>
 
@@ -100,7 +100,6 @@
                 <li><strong>Gestionar empleados:</strong> Añadir, listar, actualizar y buscar empleados en tu organización.</li>
                 <li><strong>Desarrollar habilidades:</strong> Asignar y marcar como completados los métodos de desarrollo para tus empleados.</li>
                 <li><strong>Crear oportunidades:</strong> Ver las posiciones disponibles dentro de tu empresa y asignar empleados a ellas.</li>
-                <li><strong>Gestión de usuarios:</strong> Administrar las credenciales de acceso para los usuarios del sistema.</li>
             </ul>
         </div>
 

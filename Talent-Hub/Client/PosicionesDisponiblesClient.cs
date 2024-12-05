@@ -21,6 +21,15 @@ namespace Talent_Hub.Client
             _httpClient = new HttpClient();
         }
 
+        //public async Task<string> listarPosiciones()
+        //{
+        //    var response = await _httpClient.GetAsync($"{_url}/listarPosiciones");
+        //    if (response.IsSuccessStatusCode)
+        //        return await response.Content.ReadAsStringAsync();
+
+        //    return $"Error: {response.StatusCode} - {response.ReasonPhrase}";
+        //}
+
         public async Task<string> AgregarPosicion(Posiciones_Disponibles posicion)
         {
             var jsonContent = JsonConvert.SerializeObject(posicion);

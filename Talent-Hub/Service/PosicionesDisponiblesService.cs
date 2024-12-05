@@ -18,6 +18,40 @@ namespace Talent_Hub.Service
             connectionString = ConfigurationManager.ConnectionStrings["TalentHubConnection"].ConnectionString;
         }
 
+        //public List<Posiciones_Disponibles> obtenerPosiciones()
+        //{
+        //    List<Posiciones_Disponibles> posiciones = new List<Posiciones_Disponibles>();
+
+        //    try
+        //    {
+        //        using (SqlConnection connection = new SqlConnection(connectionString))
+        //        {
+        //            string query = "SELECT * FROM Posiciones_Disponibles";
+        //            using (SqlCommand command = new SqlCommand(query, connection))
+        //            {
+        //                connection.Open();
+        //                using (SqlDataReader reader = command.ExecuteReader())
+        //                {
+        //                    while (reader.Read())
+        //                    {
+        //                        posiciones.Add(new Posiciones_Disponibles
+        //                        {
+        //                            Id_puesto = Convert.ToInt32(reader["Id_puesto"]),
+        //                            Nombre_puesto = reader["Nombre_puesto"].ToString(),
+        //                            Departamento = reader["Departamento"].ToString()
+        //                        });
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine($"Error: {ex.Message}");
+        //    }
+        //    return posiciones;
+        //}
+
         public void agregarPosicion(Posiciones_Disponibles posiciones_Disponibles)
         {
             try

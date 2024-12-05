@@ -19,6 +19,17 @@ namespace Talent_Hub.Controllers
             posicionesDisponiblesService = new PosicionesDisponiblesService();
         }
 
+        //[HttpGet]
+        //[Route("listarPosiciones")]
+        //public IHttpActionResult listarEmpleados()
+        //{
+        //    var posiciones = posicionesDisponiblesService.obtenerPosiciones();
+        //    if (posiciones == null || posiciones.Count == 0)
+        //        return NotFound();
+
+        //    return Ok(posiciones);
+        //}
+
         [HttpPost]
         [Route("agregar")]
         public IHttpActionResult AgregarPosicion(Posiciones_Disponibles posiciones)
